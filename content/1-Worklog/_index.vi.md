@@ -18,4 +18,4 @@ Từ tuần 9, tôi bắt đầu chuẩn bị cho đề tài thực tập bằng
 
 Nội dung công việc của từng tuần được trình bày như sau:
 
-**Tuần 1:** [Làm quen với AWS: IAM, EC2, VPC, Amazon S3 và AWS CLI](1.1-week1/)
+**Tuần 1:** [Tổng quan AWS: Thiết lập tài khoản, Bảo mật IAM, Quản lý chi phí & ngân sách](1.1-week1/)

@@ -18,4 +18,4 @@ The internship project, **TechMarket E-Commerce Platform**, was successfully dev
 
 The weekly worklog is organized as follows:
 
-**Week 1:** [AWS Fundamentals: IAM, EC2, VPC, Amazon S3 and AWS CLI](1.1-week1/)
+**Week 1:** [AWS Fundamentals: Account Setup, IAM Security, Budgets & Support Plans](1.1-week1/)
