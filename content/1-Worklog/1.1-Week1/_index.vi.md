@@ -8,12 +8,11 @@ pre: " <b> 1.1. </b> "
 
 ### Mục tiêu tuần 1:
 
-- Làm quen với môi trường thực tập và kiến thức cơ bản về AWS.
-- Tìm hiểu IAM và quản lý quyền truy cập.
-- Tìm hiểu cách triển khai và quản lý Amazon EC2.
-- Tìm hiểu Amazon VPC và mạng trên AWS.
-- Tìm hiểu cách triển khai website tĩnh bằng Amazon S3.
-- Thực hành IAM Role và AWS CLI.
+- Làm quen với môi trường thực tập và các khái niệm cơ bản về AWS Cloud.
+- Nắm vững kiến thức bảo mật tài khoản AWS cơ bản và quản lý IAM (MFA, Admin Group/User/Roles).
+- Học cách quản lý chi phí trên AWS thông qua việc thiết lập các loại AWS Budgets khác nhau.
+- Tìm hiểu các gói AWS Support Plans và cách quản lý yêu cầu hỗ trợ kỹ thuật trên AWS.
+- Tiếp cận cách vẽ sơ đồ kiến trúc AWS và tham gia các buổi chia sẻ kỹ thuật.
 
 ### Các công việc cần triển khai trong tuần này:
 
@@ -23,43 +22,12 @@ pre: " <b> 1.1. </b> "
 | 2   | - Hiểu về điện toán đám mây AWS: Khái niệm, Lợi ích, Hạ tầng toàn cầu, Tối ưu chi phí...<br>- Học cách tạo mới tài khoản trên AWS.<br>- Thiết lập với thiết bị xác thực đa yếu tố ảo (Virtual MFA Device).<br>- Tạo admin group, admin user và admin roles trong IAM.<br>- Tìm hiểu cách hỗ trợ xác thực tài khoản. | 20/07/2026   | 20/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 | 3   | - Tạo budget theo template.<br>- Tạo cost budget.<br>- Tạo usage budget.<br>                                                                                                                                                                                                                                        | 21/07/2026   | 21/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 | 4   | - Tạo reserved instance budget.<br>- Tạo saving plans budget.<br>- Dọn dẹp tài nguyên trong budget.<br>                                                                                                                                                                                                             | 22/07/2026   | 22/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 6   | - Tìm hiểu IAM Role và AWS CLI.<br>- Tạo IAM Role cho EC2.<br>- Gán quyền AmazonS3ReadOnlyAccess.<br>- Kết nối SSH.<br>- Thực hành các lệnh AWS CLI.                                                                                                                                                                | 16/04/2026   | 16/04/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 5   | - Học về các gói hỗ trợ của AWS.<br>- Truy cập AWS support.<br>- Quản lý yêu cầu hỗ trợ.<br>                                                                                                                                                                                                                        | 23/07/2026   | 23/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 
 ### Kết quả đạt được tuần 1:
 
-- Nắm được kiến thức cơ bản về AWS và môi trường thực tập.
-
-- Tìm hiểu IAM:
-  - Tạo IAM Group và IAM User.
-  - Gán Policy.
-  - Đăng nhập bằng tài khoản IAM.
-
-- Triển khai EC2:
-  - Cấu hình Security Group.
-  - Kết nối SSH.
-  - Cài Apache.
-  - Triển khai website đơn giản.
-
-- Tìm hiểu Amazon VPC:
-  - Tạo VPC.
-  - Cấu hình Public và Private Subnet.
-  - Gắn Internet Gateway.
-  - Cấu hình Route Table.
-  - Gán Public IPv4.
-
-- Triển khai website tĩnh bằng Amazon S3:
-  - Tạo S3 Bucket.
-  - Tải website lên.
-  - Cấu hình Bucket Policy.
-  - Bật Static Website Hosting.
-
-- Thực hành IAM Role và AWS CLI:
-  - Tạo IAM Role.
-  - Gán quyền AmazonS3ReadOnlyAccess.
-  - Sử dụng AWS CLI.
-  - Liệt kê S3 Bucket.
-  - Hiểu lỗi AccessDenied.
-
-- Có thêm kinh nghiệm thực hành với IAM, EC2, VPC, S3 và AWS CLI.
-
-- Hiểu cách phân quyền bằng IAM User, IAM Role và Policy.
+- Hiểu rõ các khái niệm cơ bản về điện toán đám mây AWS, hạ tầng toàn cầu và nguyên lý vẽ sơ đồ kiến trúc AWS.
+- Thiết lập thành công tài khoản AWS Root an toàn với MFA ảo và cấu hình phân quyền quản trị IAM (Admin Group, User, Role).
+- Thành thạo việc thiết lập và quản lý ngân sách AWS (Budgets) cho Chi phí, Mức độ sử dụng, Reserved Instance và Savings Plans.
+- Nắm vững quy trình gửi và quản lý các ticket hỗ trợ kỹ thuật trên AWS Support Center theo từng gói dịch vụ.
+- Tiếp thu thêm kiến thức thực tế về ứng dụng AI trong kiểm tra mã nguồn CI/CD và tự động hóa tuân thủ bảo mật trên AWS.
