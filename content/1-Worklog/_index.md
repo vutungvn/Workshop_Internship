@@ -19,3 +19,5 @@ The internship project, **TechMarket E-Commerce Platform**, was successfully dev
 The weekly worklog is organized as follows:
 
 **Week 1:** [AWS Fundamentals: Account Setup, IAM Security, Budgets & Support Plans](1.1-week1/)
+
+**Week 2:** [AWS Networking & Security: VPC, Hybrid DNS, Active Directory & Site-to-Site VPN](1.2-week2/)

@@ -28,6 +28,4 @@ Các phần tóm tắt sự kiện dưới đây bao gồm:
 
 ## Các sự kiện
 
-**Sự kiện 1:** [AWS VIETNAM COMMUNITY MEETUP](1.1-week1/)
-
-<!-- **Tuần 1:** [AWS Fundamentals: IAM, EC2, VPC, Amazon S3 and AWS CLI](1.1-week1/) -->
+**Sự kiện 1:** [AWS VIETNAM COMMUNITY MEETUP](4.1-Event1/_index.vi.md)

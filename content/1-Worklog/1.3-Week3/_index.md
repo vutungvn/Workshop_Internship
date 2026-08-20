@@ -1,12 +1,12 @@
 ---
-title: "Week 2 - Worklog"
-date: 2026-07-25
-weight: 2
+title: "Week 3 - Worklog"
+date: 2026-08-01
+weight: 3
 chapter: false
-pre: " <b> 1.2. </b> "
+pre: " <b> 1.3. </b> "
 ---
 
-### Week 2 Objectives:
+### Week 3 Objectives:
 
 - Master AWS Networking Fundamentals: Gain in-depth knowledge of VPC architecture, Subnets, Route Tables, Internet/NAT Gateways, and network security mechanisms (Security Groups, NACLs, VPC Flow Logs).
 
@@ -26,7 +26,7 @@ pre: " <b> 1.2. </b> "
 | 5   | - Set up Hybrid DNS with Route 53 Resolver.<br>- Generate key pair.<br>- Initialize cloudformation template. <br> - Configuring security group. <br> - Connecting to RDGW. <br> - Deploy Microsoft AD. <br> - Set up DNS.                                                                              | 30/07/2026 | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 | 6   | - Setting up VPC Peering.<br>- Update Network ACL.<br>- Create Peering Connection. <br> - Set up Cross-Peer DNS.                                                                                                                                                                                       | 31/07/2026 | 31/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 
-### Week 2 Achievements:
+### Week 3 Achievements:
 
 - Successfully Built Core VPC Infrastructure: Provisioned a complete custom VPC with Public/Private Subnets, Route Tables, Internet Gateway, NAT Gateway, and enabled VPC Flow Logs for traffic inspection.
 

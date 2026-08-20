@@ -1,12 +1,12 @@
 ---
-title: "Worklog - Tuần 2"
-date: 2026-07-25
-weight: 2
+title: "Worklog - Tuần 3"
+date: 2026-08-01
+weight: 3
 chapter: false
-pre: " <b> 1.2. </b> "
+pre: " <b> 1.3. </b> "
 ---
 
-### Mục tiêu tuần 2:
+### Mục tiêu tuần 3:
 
 - Nắm vững kiến thức cốt lõi về AWS Networking: Hiểu sâu về cấu trúc VPC, Subnets, Route Tables, Internet Gateways, NAT Gateways và các cơ chế bảo mật (Security Groups, Network ACLs, VPC Flow Logs).
 
@@ -26,7 +26,7 @@ pre: " <b> 1.2. </b> "
 | 5   | - Thiết lập Hybrid DNS với Route 53 Resolver.<br>- Tạo key pair.<br>- Khởi tạo cloudformation template. <br> - Cấu hình security group. <br> - Kết nối đến RDGW. <br> - Triển khai Microsoft AD. <br> - Thiết lập DNS.                                                             | 30/07/2026   | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 | 6   | - Thiết lập VPC Peering.<br>- Cập nhật Network ACL.<br>- Tạo kết nối Peering. <br> - Kích hoạt Cross-Peer DNS.                                                                                                                                                                     | 30/07/2026   | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
 
-### Kết quả đạt được tuần 2:
+### Kết quả đạt được tuần 3:
 
 - Khởi tạo và cấu hình thành công hệ thống VPC: Tạo hoàn chỉnh hệ thống mạng riêng bao gồm Public/Private Subnets, Route Tables, Internet Gateway, NAT Gateway và bật VPC Flow Logs để phục vụ việc giám sát truy cập.
 

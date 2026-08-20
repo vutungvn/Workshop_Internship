@@ -25,16 +25,16 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Thời gian thực tập:** Từ ngày 18/07/2026 đến ngày 25/09/2026
+&emsp; **Thời gian thực tập:** Từ ngày 18/07/2026 đến ngày 27/09/2026
 
 ![Ảnh cá nhân](/images/avatar.jpg)
 
 ### Nội dung báo cáo
 
-1.  [Worklog](1-Worklog/)
-2.  [Proposal](2-Proposal/)
+1.  [Nhật ký công việc](1-Worklog/)
+2.  [Đề xuất](2-Proposal/)
 3.  [Các bài blogs đã đăng](3-BlogsPosted/)
-4.  [Các events đã tham gia](4-EventParticipated/)
+4.  [Các sự kiện đã tham gia](4-Event/)
 5.  [Workshop](5-Workshop/)
 6.  [Tự đánh giá](6-Self-evaluation/)
 7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
