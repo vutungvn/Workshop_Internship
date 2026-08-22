@@ -21,3 +21,5 @@ The weekly worklog is organized as follows:
 **Week 1:** [AWS Fundamentals: Account Setup, IAM Security, Budgets & Support Plans](1.1-week1/)
 
 **Week 2:** [AWS Networking & Security: VPC, Hybrid DNS, Active Directory & Site-to-Site VPN](1.2-week2/)
+
+**Week 3:** [AWS Advanced Networking & Storage: Transit Gateway, Backup, File Gateway & VM Migration](1.3-week3/)

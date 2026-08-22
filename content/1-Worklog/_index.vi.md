@@ -21,3 +21,5 @@ Nội dung công việc của từng tuần được trình bày như sau:
 **Tuần 1:** [Tổng quan AWS: Thiết lập tài khoản, Bảo mật IAM, Quản lý chi phí & ngân sách](1.1-week1/)
 
 **Tuần 2:** [Mạng & Bảo mật AWS: VPC, Hybrid DNS, Active Directory & Site-to-Site VPN](1.2-week2/)
+
+**Tuần 3:** [Mạng Nâng cao & Lưu trữ AWS: Transit Gateway, Backup, File Gateway & Dịch chuyển Máy ảo](1.3-week3/)

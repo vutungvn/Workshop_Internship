@@ -8,30 +8,32 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Objectives:
 
-- Master AWS Networking Fundamentals: Gain in-depth knowledge of VPC architecture, Subnets, Route Tables, Internet/NAT Gateways, and network security mechanisms (Security Groups, NACLs, VPC Flow Logs).
+- Master AWS Interconnectivity & Hybrid Storage: Gain practical hands-on experience with AWS Transit Gateway, AWS File Storage Gateway, and hybrid virtual machine migration (VM Import/Export).
 
-- Deploy Secure Network Infrastructure: Configure secure connectivity using EC2 Instance Connect Endpoints, establish Site-to-Site VPN connections, and set up VPC Peering.
+- Deploy Automated Data Protection & Backup: Configure centralized backup policies using AWS Backup, integrated with S3 storage and notification mechanisms.
 
-- Integrate Hybrid DNS & Identity Services: Set up Hybrid DNS using Route 53 Resolver, deploy Microsoft Active Directory on AWS, and establish access via RDGW.
+- Configure Object Storage & Static Web Hosting: Learn Amazon S3 management, including bucket policies, Block Public Access settings, static website hosting, and Access Control Lists (ACLs).
 
-- Implement Monitoring & Automation: Deploy CloudWatch Monitoring, initialize infrastructure using CloudFormation templates, and refine security group configurations.
+- Execute On-Premises to Cloud Migration: Practice exporting, uploading, importing, and deploying virtual machine images (AMIs) between on-premises environments and AWS.
 
 ### Tasks to be carried out this week:
 
-| Day | Task                                                                                                                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                      |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | --------------------------------------- |
-| 2   | - Learn about VPC: Concepts, architecture and scope, core components: Subnets, Route Tables, Internet Gateways, NAT Gateways.<br>- Learn about Firewall in VPC: Security Groups, Network ACLs, VPC Resource Map.<br>- Create VPC.<br>- Create Subnets.<br>- Create Internet Gateway.                   | 27/07/2026 | 27/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 3   | - Create Route Table.<br>- Create Security Group.<br>- Enable VPC Flow Logs.                                                                                                                                                                                                                           | 28/07/2026 | 28/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 4   | - Create NAT Gateway.<br>- Create EC2 Instance Connect Endpoint.<br>- Deploy CloudWatch Monitoring.<br>- Configure Site-to-Site VPN:<br> + Set up VPN environment: Create VPN for VPC, create EC2 instance.<br> + Configure VPN Connection: Create Virtual Private Gateway, create Customer Gateway... | 29/07/2026 | 29/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 5   | - Set up Hybrid DNS with Route 53 Resolver.<br>- Generate key pair.<br>- Initialize cloudformation template. <br> - Configuring security group. <br> - Connecting to RDGW. <br> - Deploy Microsoft AD. <br> - Set up DNS.                                                                              | 30/07/2026 | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 6   | - Setting up VPC Peering.<br>- Update Network ACL.<br>- Create Peering Connection. <br> - Set up Cross-Peer DNS.                                                                                                                                                                                       | 31/07/2026 | 31/07/2026      | https://cloudjourney.awsstudygroup.com/ |
+| Day | Task                                                                                                                                                                                                                             | Start Date | Completion Date | Reference Material                      |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | --------------------------------------- |
+| 2   | - Set up AWS Transit Gateway.<br>- Create Transit Gateway.<br>- Create Transit Gateway route tables.<br>- Add Transit Gateway routes to VPC route tables.                                                                        | 03/08/2026 | 03/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 3   | - Deploy AWS Backup to the System.<br>- Create S3 Bucket.<br>- Create Backup plan. <br> - Set up notifications.                                                                                                                  | 04/08/2026 | 04/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 4   | - Deploy File Storage Gateway.<br>- Create EC2 for Storage Gateway.<br>- Create Storage Gateway.<br>- Create File Shares.<br> - Connect File Shares on On-premise machine.                                                       | 05/08/2026 | 05/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 5   | - Starting with Amazon S3.<br>- Enable static website feature.<br>- Configuring public access block. <br> - Configuring public objects.                                                                                          | 06/08/2026 | 06/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 6   | - Export Virtual Machine from On-premises.<br>- Upload virtual machine to AWS.<br>- Import virtual machine to AWS. <br> - Deploy Instance from AMI. <br> - Setting up S3 bucket ACL.<br> - Export virtual machine from Instance. | 07/08/2026 | 07/08/2026      | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 3 Achievements:
 
-- Successfully Built Core VPC Infrastructure: Provisioned a complete custom VPC with Public/Private Subnets, Route Tables, Internet Gateway, NAT Gateway, and enabled VPC Flow Logs for traffic inspection.
+- Successfully Configured AWS Transit Gateway: Created Transit Gateway resource, established route tables, and updated VPC route tables to enable seamless cross-network routing.
 
-- Established Secure Connectivity & Peering: Deployed EC2 Instance Connect Endpoint, configured a Site-to-Site VPN (Virtual Private Gateway & Customer Gateway), and linked VPCs via VPC Peering with Cross-Peer DNS and updated NACLs.
+- Deployed Automated Backup Management: Provisioned S3 target buckets and configured automated AWS Backup plans with event notification systems.
 
-- Deployed Advanced DNS & Directory Services: Integrated Route 53 Resolver for Hybrid DNS resolution and successfully launched Microsoft Active Directory with RDGW using CloudFormation templates.
+- Established File Storage Gateway: Deployed EC2-based Storage Gateway, configured file shares, and successfully mounted shares onto on-premises machines for hybrid access.
 
-- Configured Centralized Monitoring: Fully enabled CloudWatch Monitoring across the newly established network and instance infrastructure.
+- Implemented S3 Static Web Hosting & Security: Enabled static website hosting on Amazon S3 while properly configuring Block Public Access rules and object-level permissions.
+
+- Executed End-to-End VM Migration & Management: Completed full-cycle virtual machine export/import processes between on-premises and AWS, launched EC2 instances from converted AMIs, managed S3 ACLs, and exported instances back to VM formats.

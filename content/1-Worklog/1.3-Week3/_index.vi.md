@@ -8,30 +8,32 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-- Nắm vững kiến thức cốt lõi về AWS Networking: Hiểu sâu về cấu trúc VPC, Subnets, Route Tables, Internet Gateways, NAT Gateways và các cơ chế bảo mật (Security Groups, Network ACLs, VPC Flow Logs).
+- Nắm vững kết nối nâng cao & Lưu trữ Hybrid trên AWS: Đạt được kỹ năng thực hành thực tế với AWS Transit Gateway, AWS File Storage Gateway và quy trình dịch chuyển máy ảo lai (VM Import/Export).
 
-- Triển khai hạ tầng mạng bảo mật: Cấu hình truy cập an toàn bằng EC2 Instance Connect Endpoint, thiết lập kết nối Site-to-Site VPN và thiết lập VPC Peering giữa các môi trường.
+- Triển khai giải pháp Tự động hóa Sao lưu & Bảo vệ Dữ liệu: Cấu hình các chính sách sao lưu tập trung bằng AWS Backup, kết hợp với dịch vụ lưu trữ Amazon S3 và cơ chế gửi cảnh báo/thông báo.
 
-- Tích hợp dịch vụ Hybrid DNS và Identity: Cấu hình Hybrid DNS với Route 53 Resolver, triển khai Microsoft Active Directory trên AWS và kết nối qua RDGW.
+- Cấu hình Lưu trữ Đối tượng & Lưu trữ Website Tĩnh: Thành thạo quản trị Amazon S3, bao gồm cấu hình Bucket Policy, thiết lập Block Public Access, bật tính năng Static Website Hosting và quản lý quyền truy cập ACLs.
 
-- Theo dõi và tự động hóa: Thiết lập CloudWatch Monitoring, khởi tạo tài nguyên bằng CloudFormation template và cấu hình bảo mật nâng cao.
+- Thực thi Dịch chuyển Máy ảo từ On-Premises lên Cloud: Thực hành xuất (export), tải lên (upload), nhập (import) và triển khai các hình ảnh máy ảo (AMI) giữa môi trường On-premises và AWS.
 
 ### Các công việc cần triển khai trong tuần này:
 
-| Thứ | Công việc                                                                                                                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                          |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------- |
-| 2   | - Học về VPC: khái niệm, kiến trúc và phạm vi, các thành phần cơ bản: Subnets, Route Table, Internet Gateway, NAT Gateway.<br>- Học về tường lửa trong VPC: Security Group, Network ACLs, VPC Resource Map.<br>- Tạo VPC.<br>- Tạo Subnet.<br>- Tạo Internet Gateway.              | 27/07/2726   | 27/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 3   | - Tạo Route Table.<br>- Tạo Security Group.<br>- Kích hoạt VPC Flow Logs.<br>                                                                                                                                                                                                      | 28/07/2026   | 28/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 4   | - Tạo NAT Gateway.<br>- Tạo EC2 Instance Connect Endpoint.<br>- Triển khai CloudWatch Monitoring.<br> - Cấu hình Site to Site VPN: <br> + Tạo môi trường VPN: tạo VPC cho VPN, tạo EC2 Instance. <br> + Cấu hình kết nối VPN: tạo Virtual Private Gateway, tạo Customer Gateway... | 29/07/2026   | 29/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 5   | - Thiết lập Hybrid DNS với Route 53 Resolver.<br>- Tạo key pair.<br>- Khởi tạo cloudformation template. <br> - Cấu hình security group. <br> - Kết nối đến RDGW. <br> - Triển khai Microsoft AD. <br> - Thiết lập DNS.                                                             | 30/07/2026   | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
-| 6   | - Thiết lập VPC Peering.<br>- Cập nhật Network ACL.<br>- Tạo kết nối Peering. <br> - Kích hoạt Cross-Peer DNS.                                                                                                                                                                     | 30/07/2026   | 30/07/2026      | https://cloudjourney.awsstudygroup.com/ |
+| Thứ | Công việc                                                                                                                                                                                            | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                          |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------- |
+| 2   | - Thiết lập AWS Transit Gateway.<br>- Tạo Transit Gateway.<br>- Tạo Transit Gateway route tables.<br>- Thêm Transit Gateway routes vào VPC route tables.                                             | 03/08/2026   | 03/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 3   | - Triển khai AWS Backup cho hệ thống.<br>- Tạo S3 Bucket.<br>- Tạo Backup plan.<br>- Thiết lập thông báo.<br>                                                                                        | 04/08/2026   | 04/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 4   | - Triển khai File Storage Gateway.<br>- Tạo EC2 cho Storage Gateway.<br>- Tạo Storage Gateway.<br> - Tạo File Shares. <br> - Kết nối File Shares ở máy On-premise.                                   | 05/08/2026   | 05/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 5   | - Khởi đầu với amazon S3.<br>- Bật tính năng static website.<br>- Cấu hình Block Public Access. <br> - Cấu hình public object.                                                                       | 06/08/2026   | 06/08/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 6   | - Export máy ảo từ On-premise.<br>- Tải máy ảo lên AWS.<br>- Import máy ảo vào AWS. <br> - Triển khai EC2 Instance từ AMI. <br> - Thiết lập ACL cho S3 Bucket. <br> - Export máy ảo từ EC2 Instance. | 07/08/2026   | 07/08/2026      | https://cloudjourney.awsstudygroup.com/ |
 
 ### Kết quả đạt được tuần 3:
 
-- Khởi tạo và cấu hình thành công hệ thống VPC: Tạo hoàn chỉnh hệ thống mạng riêng bao gồm Public/Private Subnets, Route Tables, Internet Gateway, NAT Gateway và bật VPC Flow Logs để phục vụ việc giám sát truy cập.
+- Cấu hình thành công AWS Transit Gateway: Tạo tài nguyên Transit Gateway, thiết lập các bảng tuyến đường (route table) và cập nhật route table của VPC để cho phép định tuyến giữa các mạng linh hoạt.
 
-- Tăng cường bảo mật và kết nối an toàn: Thiết lập thành công EC2 Instance Connect Endpoint, triển khai kết nối Site-to-Site VPN (Virtual Private Gateway & Customer Gateway) và liên kết các VPC thông qua VPC Peering (bao gồm cả Cross-Peer DNS và cập nhật NACL).
+- Triển khai Hệ thống Quản lý Sao lưu Tự động: Khởi tạo S3 Bucket làm nơi lưu trữ và cấu hình các kế hoạch sao lưu tự động với AWS Backup, đi kèm hệ thống thông báo sự kiện.
 
-- Triển khai hạ tầng DNS và Identity nâng cao: Thiết lập thành công Route 53 Resolver cho mô hình Hybrid DNS, triển khai hệ thống Microsoft Active Directory kết hợp RDGW bằng CloudFormation template.
+- Thiết lập File Storage Gateway: Triển khai Storage Gateway trên EC2, cấu hình các File Share và kết nối thành công File Share tới các máy trạm On-premises phục vụ truy cập hybrid.
 
-- Hoàn thành triển khai CloudWatch Monitoring: Cấu hình giám sát tập trung cho hệ thống mạng và hạ tầng máy chủ.
+- Triển khai Website Tĩnh trên S3 & Cấu hình Bảo mật: Bật thành công tính năng Static Website Hosting trên Amazon S3, đồng thời cấu hình chuẩn xác các quy tắc Block Public Access và phân quyền ở cấp độ đối tượng.
+
+- Hoàn thành Quy trình Dịch chuyển & Quản lý Máy ảo End-to-End: Thực hiện trọn vẹn quy trình export/import máy ảo giữa môi trường On-premises và AWS, khởi chạy EC2 Instance từ các AMI đã chuyển đổi, quản lý S3 ACLs và export ngược instance thành định dạng máy ảo.
