@@ -23,3 +23,5 @@ The weekly worklog is organized as follows:
 **Week 2:** [AWS Networking & Security: VPC, Hybrid DNS, Active Directory & Site-to-Site VPN](1.2-week2/)
 
 **Week 3:** [AWS Advanced Networking & Storage: Transit Gateway, Backup, File Gateway & VM Migration](1.3-week3/)
+
+**Week 4:** [AWS Enterprise Storage & Security: FSX, S3 CRR, Security Hub & Lambda Automation](1.4-week4/)

@@ -23,3 +23,5 @@ Nội dung công việc của từng tuần được trình bày như sau:
 **Tuần 2:** [Mạng & Bảo mật AWS: VPC, Hybrid DNS, Active Directory & Site-to-Site VPN](1.2-week2/)
 
 **Tuần 3:** [Mạng Nâng cao & Lưu trữ AWS: Transit Gateway, Backup, File Gateway & Dịch chuyển Máy ảo](1.3-week3/)
+
+**Tuần 4:** [Lưu trữ & Bảo mật nâng cao AWS: FSX, S3 CRR, Security Hub & Tự động hóa Lambda](1.4-week4/)
