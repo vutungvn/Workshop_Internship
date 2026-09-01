@@ -27,3 +27,9 @@ The weekly worklog is organized as follows:
 **Week 4:** [AWS Enterprise Storage & Security: FSX, S3 CRR, Security Hub & Lambda Automation](1.4-week4/)
 
 **Week 5:** [AWS Security Boundaries, Data Governance & Database Migration](1.5-week5/)
+
+**Week 6:** [Conceptualization, System Architecture Design, CloudFront Configuration, WAF, and Logging](1.6-week6/)
+
+**Week 7:** [Incident Detection, Lambda Automation & SNS Notification](1.7-week7/)
+
+**Week 8:** [End-to-End Testing, Attack Simulation & Project Finalization](1.8-week8/)

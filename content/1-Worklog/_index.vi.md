@@ -27,3 +27,9 @@ Nội dung công việc của từng tuần được trình bày như sau:
 **Tuần 4:** [Lưu trữ & Bảo mật nâng cao AWS: FSX, S3 CRR, Security Hub & Tự động hóa Lambda](1.4-week4/)
 
 **Tuần 5:** [Ranh giới bảo mật AWS, Quản trị dữ liệu & Di chuyển cơ sở dữ liệu](1.5-week5/)
+
+**Tuần 6:** [Lên ý tưởng đề tài, Thiết kế kiến trúc hệ thống, Cấu hình CloudFront, WAF & Ghi log](1.6-week6/)
+
+**Tuần 7:** [Phát hiện sự cố, Tự động hóa với Lambda & Thông báo SNS](1.7-week7/)
+
+**Tuần 8:** [Kiểm thử End-to-End, Giả lập tấn công & Tổng kết dự án](1.8-week8/)
