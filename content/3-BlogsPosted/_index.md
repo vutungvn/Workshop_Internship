@@ -8,11 +8,11 @@ pre: " <b> 3. </b> "
 
 During the 15-week internship I published **3 in-depth technical blogs** on [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj) — analyzing real-world case studies on AWS, covering new service features, cost optimization with IaC, and using AI services to solve concrete enterprise problems.
 
-| #      | Topic                                                                                         | Category (per FCAJ requirement)                          | Date       |
-| ------ | --------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ---------- |
-| Blog 1 | **Automated EC2 & RDS Cost Optimization with AWS Lambda and EventBridge**                     | Cost optimization & FinOps automation with Serverless    | 01/08/2026 |
-| Blog 2 | **Automate medical record digitization with Amazon Bedrock Data Automation + AWS HealthLake** | Using AI services to solve a healthcare industry problem | 03/05/2026 |
-| Blog 3 | **Solving automated contract intelligence with Doczy.ai™ on AWS**                             | New features: Textract + Bedrock + Smart Chunking        | 07/06/2026 |
+| #      | Topic                                                                      | Category (per FCAJ requirement)                       | Date       |
+| ------ | -------------------------------------------------------------------------- | ----------------------------------------------------- | ---------- |
+| Blog 1 | **Automated EC2 & RDS Cost Optimization with AWS Lambda and EventBridge**  | Cost optimization & FinOps automation with Serverless | 01/08/2026 |
+| Blog 2 | **Implementing AWS Verified Access in a TIC 3.0 Architecture without VPN** | Advanced Networking & Zero-Trust Access Security      | 15/08/2026 |
+| Blog 3 | **Solving automated contract intelligence with Doczy.ai™ on AWS**          | New features: Textract + Bedrock + Smart Chunking     | 07/06/2026 |
 
 ---
 
@@ -24,7 +24,7 @@ Running non-production environments (Dev, Test, Staging) 24/7 generates massive 
 
 ### [3.2. Blog 2](3.2-Blog2/)
 
-Millions of paper medical records in hospitals are still being keyed in manually at a cost of **millions of USD/year** and an error rate of 5-15%. This blog analyzes a **serverless + event-driven** architecture combining **Amazon Bedrock Data Automation** (extracts 50+ clinical fields with AI, no training data needed) and **AWS HealthLake** (a HIPAA-eligible FHIR R4 data store) to convert scanned PDFs into standardized medical data in **~30 minutes per 1,000 records** instead of 2-3 weeks, at a cost of **<$0.50 per record** with an error rate of **<1%**.
+Implementing Zero-Trust security for government agencies and enterprises following TIC 3.0 (Trusted Internet Connections) guidelines often faces bottlenecks due to reliance on traditional VPNs. This blog analyzes how to leverage **AWS Verified Access (AVA)** alongside **AWS Network Firewall** and **Amazon Route 53 Resolver DNS Firewall** to build a secure VPN-less access architecture. The solution provides continuous verification based on user identity and device posture, satisfying strict TIC 3.0 compliance controls while optimizing remote worker productivity.
 
 ---
 

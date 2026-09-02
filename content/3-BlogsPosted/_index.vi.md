@@ -8,11 +8,11 @@ pre: " <b> 3. </b> "
 
 Trong suốt 15 tuần thực tập, tôi đã xuất bản **3 bài blog kỹ thuật chuyên sâu** trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj) — phân tích các tình huống thực tế trên AWS, giới thiệu các tính năng dịch vụ mới, tối ưu hóa chi phí bằng IaC và ứng dụng các dịch vụ AI để giải quyết bài toán doanh nghiệp cụ thể.
 
-| #      | Chủ đề                                                                                | Danh mục (Theo yêu cầu FCAJ)                       | Ngày đăng  |
-| ------ | ------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------- |
-| Blog 1 | **Tối ưu chi phí EC2 & RDS tự động bằng AWS Lambda và EventBridge**                   | Tối ưu chi phí & Tự động hóa FinOps với Serverless | 01/08/2026 |
-| Blog 2 | **Tự động hóa số hóa hồ sơ y tế với Amazon Bedrock Data Automation + AWS HealthLake** | Sử dụng dịch vụ AI giải quyết bài toán ngành Y tế  | 03/05/2026 |
-| Blog 3 | **Giải bài toán phân tích hợp đồng thông minh với Doczy.ai™ trên AWS**                | Tính năng mới: Textract + Bedrock + Smart Chunking | 07/06/2026 |
+| #      | Chủ đề                                                                           | Danh mục (Theo yêu cầu FCAJ)                       | Ngày đăng  |
+| ------ | -------------------------------------------------------------------------------- | -------------------------------------------------- | ---------- |
+| Blog 1 | **Tối ưu chi phí EC2 & RDS tự động bằng AWS Lambda và EventBridge**              | Tối ưu chi phí & Tự động hóa FinOps với Serverless | 01/08/2026 |
+| Blog 2 | **Triển khai AWS Verified Access trong kiến trúc bảo mật TIC 3.0 không cần VPN** | Mạng nâng cao & Bảo mật Zero-Trust Access          | 15/08/2026 |
+| Blog 3 | **Giải bài toán phân tích hợp đồng thông minh với Doczy.ai™ trên AWS**           | Tính năng mới: Textract + Bedrock + Smart Chunking | 07/06/2026 |
 
 ---
 
@@ -24,7 +24,7 @@ Vận hành môi trường không phải sản xuất (Dev, Test, Staging) 24/7 
 
 ### [3.2. Blog 2](3.2-Blog2/)
 
-Hàng triệu hồ sơ y tế bằng giấy tại các bệnh viện vẫn đang được nhập liệu thủ công với chi phí lên tới **hàng triệu USD/năm** và tỷ lệ lỗi từ 5-15%. Bài viết phân tích kiến trúc **serverless + event-driven** kết hợp **Amazon Bedrock Data Automation** (trích xuất hơn 50 trường dữ liệu lâm sàng bằng AI mà không cần dữ liệu huấn luyện) và **AWS HealthLake** (kho dữ liệu chuẩn FHIR R4 đạt chuẩn HIPAA) để chuyển đổi PDF quét thành dữ liệu y tế chuẩn hóa chỉ trong **~30 phút cho mỗi 1.000 hồ sơ** thay vì 2-3 tuần, với chi phí **<$0.50 mỗi hồ sơ** và tỷ lệ lỗi **<1%**.
+Triển khai bảo mật Zero-Trust cho khối cơ quan chính phủ và doanh nghiệp theo tiêu chuẩn TIC 3.0 (Trusted Internet Connections) thường gặp trở ngại do sự phụ thuộc vào VPN truyền thống. Bài viết này phân tích phương pháp ứng dụng **AWS Verified Access (AVA)** kết hợp với **AWS Network Firewall** và **Amazon Route 53 Resolver DNS Firewall** để xây dựng kiến trúc truy cập an toàn không cần VPN (VPN-less). Giải pháp giúp xác thực liên tục dựa trên nhận dạng người dùng (Identity) và trạng thái thiết bị (Device Posture), đáp ứng toàn bộ các yêu cầu khắt khe của khung bảo mật TIC 3.0 mà vẫn tối ưu hóa trải nghiệm làm việc từ xa.
 
 ---
 
