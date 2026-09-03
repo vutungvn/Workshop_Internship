@@ -6,13 +6,13 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-Trong suốt 15 tuần thực tập, tôi đã xuất bản **3 bài blog kỹ thuật chuyên sâu** trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj) — phân tích các tình huống thực tế trên AWS, giới thiệu các tính năng dịch vụ mới, tối ưu hóa chi phí bằng IaC và ứng dụng các dịch vụ AI để giải quyết bài toán doanh nghiệp cụ thể.
+Trong 8 tuần thực tập, tôi đã hoàn thiện và xuất bản **3 bài blog kỹ thuật chuyên sâu** trên cộng đồng [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Các bài viết tập trung giải quyết các bài toán thực tế của doanh nghiệp: tự động hóa tối ưu chi phí FinOps, kiến trúc bảo mật Zero-Trust không VPN và ứng dụng Generative AI Serverless vào tra cứu tri thức nội bộ.
 
-| #      | Chủ đề                                                                           | Danh mục (Theo yêu cầu FCAJ)                       | Ngày đăng  |
-| ------ | -------------------------------------------------------------------------------- | -------------------------------------------------- | ---------- |
-| Blog 1 | **Tối ưu chi phí EC2 & RDS tự động bằng AWS Lambda và EventBridge**              | Tối ưu chi phí & Tự động hóa FinOps với Serverless | 01/08/2026 |
-| Blog 2 | **Triển khai AWS Verified Access trong kiến trúc bảo mật TIC 3.0 không cần VPN** | Mạng nâng cao & Bảo mật Zero-Trust Access          | 15/08/2026 |
-| Blog 3 | **Giải bài toán phân tích hợp đồng thông minh với Doczy.ai™ trên AWS**           | Tính năng mới: Textract + Bedrock + Smart Chunking | 07/06/2026 |
+| #      | Chủ đề                                                                                             | Danh mục (Theo yêu cầu FCAJ)                          | Ngày đăng  |
+| ------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------- |
+| Blog 1 | **Tối ưu chi phí EC2 & RDS tự động bằng AWS Lambda và EventBridge**                                | Tối ưu chi phí & Tự động hóa FinOps với Serverless    | 01/08/2026 |
+| Blog 2 | **Triển khai AWS Verified Access trong kiến trúc bảo mật TIC 3.0 không cần VPN**                   | Mạng nâng cao & Bảo mật Zero-Trust Access             | 15/08/2026 |
+| Blog 3 | **Xây dựng hệ thống RAG tra cứu tài liệu doanh nghiệp với Amazon Bedrock & OpenSearch Serverless** | Ứng dụng Generative AI & Tìm kiếm tri thức Serverless | 01/09/2026 |
 
 ---
 
@@ -30,4 +30,4 @@ Triển khai bảo mật Zero-Trust cho khối cơ quan chính phủ và doanh n
 
 ### [3.3. Blog 3](3.3-Blog3/)
 
-AArete đã xây dựng **Doczy.ai™** — một hệ thống phân tích hợp đồng thông minh chạy trên AWS đã xử lý **2.5 triệu hợp đồng (~50 triệu trang)** trong 22 tháng, đạt độ chính xác **99%** (so với 55% của các hệ thống dựa trên quy tắc cũ), thực hiện **137 triệu lượt gọi API Bedrock** và tiết kiệm cho khách hàng **~$330 triệu USD**. Bài viết đi sâu vào kiến trúc **Textract + Bedrock + Smart Chunking** (bằng sáng chế cốt lõi của AArete) và **phân cụm kép (dual clustering)** — một mô hình mạnh mẽ cho tài liệu pháp lý mà bất kỳ đội ngũ nào đang xây dựng hệ thống RAG đều có thể học hỏi.
+Hệ thống tra cứu tri thức nội bộ truyền thống dựa trên từ khóa thường gặp hạn chế lớn về ngữ cảnh và khả năng tổng hợp câu trả lời cho nhân viên. Bài viết này chi tiết hóa cách xây dựng giải pháp **Generative AI Chatbot (RAG)** chuẩn doanh nghiệp không dùng máy chủ (Serverless). Bằng cách kết hợp **Amazon Bedrock (Titan Embeddings & Claude 3)**, **Amazon OpenSearch Serverless (Vector Engine)** và **Knowledge Bases for Amazon Bedrock**, giải pháp cho phép tra cứu tài liệu nội bộ chính xác cao, tự động hóa quy trình phân mảnh (chunking), lập chỉ mục (indexing) và bảo mật dữ liệu tuyệt đối theo tiêu chuẩn AWS.
