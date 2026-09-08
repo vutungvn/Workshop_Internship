@@ -14,101 +14,94 @@ pre: " <b> 2. </b> "
 
 # 1. Project Summary
 
-**Automated Threat Protection** is a cloud-native security solution designed to automate the detection, response, and mitigation of web application attacks (such as DDoS, Brute Force, Web Scraping, SQL Injection, and Cross-Site Scripting).
+**Automated Threat Protection** is a Cloud-Native Security Solution designed to automate the detection, response, and mitigation of malicious web attacks (such as DDoS, Brute Force, Web Scraping, and HTTP Flood) targeted at static websites hosted on Amazon S3 and distributed via Amazon CloudFront.
 
-The system fully leverages AWS managed services, including **AWS WAF**, **Amazon CloudFront**, **Amazon CloudWatch**, **AWS Lambda**, and **Amazon SNS**. By continuously analyzing logs and metrics in real time, the system proactively identifies suspicious IP addresses, automatically adds them to the **IP Set** blocklist on AWS WAF, and sends instant alerts to the operations team through Amazon SNS.
+The solution leverages fully managed AWS services including **Amazon S3**, **Amazon CloudFront**, **AWS WAF**, **Amazon CloudWatch**, **Amazon SNS**, and **AWS Lambda**. By continuously analyzing real-time WAF logs and metrics, the system proactively identifies suspicious IP addresses, triggers an automated pipeline to parse logs, extracts offending IPs, updates them into a blocking list (**WAF IP Set V6**), and sends immediate alert notifications to system administrators.
 
-The solution ensures outstanding scalability, extremely low attack-mitigation latency, optimized operating costs, and minimizes manual human intervention in the security incident response process.
+This solution ensures exceptional scalability, near real-time attack mitigation, optimized operational costs, and minimizes manual intervention during security incident response.
 
 ---
 
 # 2. Problem Statement
 
-## Current Problem
+## Existing Challenges
 
-Web applications are increasingly becoming primary targets for automated cyberattacks. Traditional defense and incident-response approaches face several limitations:
+Modern web applications are primary targets for automated malicious traffic. Traditional defense and incident response mechanisms face critical limitations:
 
-- **Slow manual response:** During Brute Force or HTTP Flood attacks, operations engineers must manually inspect logs, identify malicious IPs, and add them to the firewall by hand. This process is time-consuming and leads to prolonged service downtime.
-- **Lack of real-time automation:** Static firewall solutions cannot flexibly adjust rules based on continuously fluctuating traffic volumes.
-- **Wasted system resources:** Attacks that are not blocked at the Edge Location penetrate deep into the backend, overloading application servers and databases.
-- **Lack of centralized alerting:** The security team lacks immediate visibility into the scale, frequency, and origin of attack waves.
+- **Delayed Manual Response:** During Brute Force or HTTP Flood attacks, operations engineers must manually inspect logs, identify malicious IPs, and add them to firewall rules. This process is time-consuming and leads to extended service downtime.
+- **Lack of Real-Time Automation:** Static firewall configurations cannot dynamically adjust rules based on fluctuating traffic volume.
+- **Backend Resource Exhaustion:** Malicious traffic that is not blocked at the edge reaches backend servers, causing heavy resource strain on application servers and databases.
+- **Fragmented Incident Visibility:** Security teams lack real-time visibility into the scale, frequency, and origins of incoming attacks.
 
-## Solution
+## Proposed Solution
 
-The proposed solution builds an **Automated Threat Protection** system that fully automates the process of detecting and blocking attacking IPs on AWS:
+The proposed solution implements an end-to-end Automated Threat Protection workflow on AWS following industry architecture standards:
 
-- **Amazon CloudFront** acts as the CDN that distributes content and blocks attacks at the outermost layer (Edge Location).
-- **AWS WAF** filters HTTP/HTTPS traffic, applies baseline protection rules, and enforces blocking of IPs in the **IP Set**.
-- **Amazon CloudWatch** collects WAF metrics and CloudFront access logs in real time, detecting abnormal traffic thresholds (e.g., a single IP sending more than 100 requests in 5 minutes).
-- When an alert is triggered, **Amazon CloudWatch Alarm** invokes an **AWS Lambda Function**. The Lambda function immediately extracts the offending IP and automatically updates the **AWS WAF IP Set** to block access.
-- At the same time, **Amazon SNS** sends detailed alerts (via Email/Telegram/Slack) to system administrators for monitoring.
+- **Amazon S3 (Origin):** Securely stores static website assets with Block Public Access enabled.
+- **Amazon CloudFront:** Delivers content globally over CDN and protects the application at the edge via AWS WAF integration.
+- **AWS WAF:** Filters HTTP/HTTPS traffic using rate-limiting rules (`Rate-based Rule`) and IP blocking rules (`IP Set Rule`), while streaming access logs to a CloudWatch Log Group (`aws-waf-logs-cloudfront`).
+- **Amazon CloudWatch Alarm:** Monitors WAF `BlockedRequests` metrics. When thresholds are breached (In Alarm state), CloudWatch sends alarm signals to an **Amazon SNS Topic**.
+- **Amazon SNS:** Acts as the central notification and fan-out service, sending **Email Notifications** directly to administrators while serving as a **Trigger** for **AWS Lambda**.
+- **AWS Lambda:** Parses incoming logs from CloudWatch Logs, extracts offending IP addresses (`clientIp`), formats CIDR subnets, and updates the WAF IP Set to block offenders permanently.
 
-## Benefits
+## Key Benefits
 
-- **Near real-time automated blocking:** Reduces response time from hours to seconds.
-- **Edge protection:** Blocks malicious traffic before it reaches backend servers.
-- **Cost and resource savings:** Reduces load on internal servers and lowers infrastructure costs during an attack.
-- **Serverless operation:** No servers to manage or maintain for the security monitoring system.
-- **High scalability:** Easily extend new attack-detection scenarios or integrate additional log sources.
+- **Near Real-Time Attack Blocking:** Reduces incident response time from hours to seconds.
+- **Edge Layer Protection:** Blocks malicious traffic at CloudFront edge locations before it hits the origin.
+- **Cost & Resource Optimization:** Reduces system load and infrastructure expenditure during attack surges.
+- **100% Serverless Operations:** Eliminates the need to provision or manage servers for security monitoring.
+- **High Scalability:** Easily adaptable to new attack scenarios and scalable with traffic growth.
 
 ---
 
 # 3. Solution Architecture
 
-The system follows a Cloud-Native Serverless Security architecture on AWS infrastructure.
+The system strictly follows Cloud-Native Serverless Security architecture on AWS.
 
-## Solution Architecture Diagram
+## Architecture Diagram
 
-![System Architecture](/images/proposal/system_architecture.png)
+System workflow sequence:
+
+**S3 (Origin) → CloudFront (Distribution) → AWS WAF (Rate-based + IP Set V6) → CloudWatch Logs / Alarm → Amazon SNS → AWS Lambda → WAF IP Set V6 & Email Notification**
+
+![System Architecture](/images/proposal/system_architecture1.png)
 
 ## AWS Services Used
 
-- Amazon CloudFront
+- Amazon S3 (Origin storage)
+- Amazon CloudFront (CDN Edge protection)
 - AWS WAF (Web Application Firewall)
-- Amazon CloudWatch (Metrics, Logs, Alarms)
-- AWS Lambda
+- Amazon CloudWatch (Log Group `aws-waf-logs-cloudfront` & Alarms)
 - Amazon SNS (Simple Notification Service)
+- AWS Lambda (Python runtime)
 - AWS IAM (Identity and Access Management)
 
 ## Component Design
 
 ### Edge & Traffic Filtering Layer
 
-- **Amazon CloudFront:** Distributes the web application, balances load, and optimizes access speed.
-- **AWS WAF:** Integrated directly with CloudFront, managing Managed Rule Sets and Custom Rules (including the Blocked IP Set).
+- **Amazon S3:** Bucket configured with Block All Public Access, acting as the web origin.
+- **Amazon CloudFront:** Connects to S3 via Origin Access Control (OAC), forcing all traffic through CloudFront and HTTPS.
+- **AWS WAF:** Attached directly to the CloudFront Distribution, including:
+  - _Rate-based Rule (`BlockSpamRateLimit`):_ Automatically detects and mitigates request bursts.
+  - _IP Set Rule (`BlockAutoIPSetRuleV6`):_ Applies the blacklisted IP set (`AutoBlockedIPSetV6`) for persistent blocking.
 
 ### Detection & Monitoring Layer
 
-- **CloudWatch Logs:** Stores and analyzes access logs from AWS WAF and CloudFront.
-- **CloudWatch Alarms:** Monitors WAF metrics (e.g., `BlockedRequests`, `AllowedRequests` per IP) and triggers actions when configured thresholds are exceeded.
+- **CloudWatch Logs:** Collects WAF access logs into the Log Group `aws-waf-logs-cloudfront`.
+- **CloudWatch Alarms:** Tracks the `BlockedRequests` metric from the Web ACL. When threshold conditions are met (e.g., Sum >= 1 in 1 minute), the alarm changes state and notifies SNS.
 
-### Automated Mitigation Layer
+### Automation & Alerting Layer
 
-- **AWS Lambda:** A serverless compute function (written in Python/Node.js) that contains the processing logic: extracting the attacking IP, calling the AWS WAF API to add the IP to the blocklist, and setting a time-to-live (TTL) for the IP.
-
-### Notification Layer
-
-- **Amazon SNS:** Acts as a pub/sub broker to instantly push incident notifications to developer/security team channels.
-
-### Deployment Workflow
-
-User request
-
-↓
-
-Amazon CloudFront + AWS WAF _(Traffic filtering)_
-
-↓
-
-Amazon CloudWatch _(Log ingestion & threshold checking)_
-
-↓
-
-AWS Lambda _(Automatically extract IP & update WAF IP Set)_
-
-↓
-
-Amazon SNS _(Send incident notification to the Operations Team)_
+- **Amazon SNS Topic (`WAFAlertTopic`):** Receives alarm states from CloudWatch Alarms.
+  - Sends immediate email alerts to system admins via Email Subscription.
+  - Triggers execution of the **AWS Lambda Function**.
+- **AWS Lambda (`WAFAutoBlockFunction`):** Python-based serverless function executing logic to:
+  1. Query the CloudWatch Log Group `aws-waf-logs-cloudfront` for recent log events.
+  2. Parse the JSON log payload to extract offending IP addresses (`clientIp`).
+  3. Classify IP subnet formatting (IPv6 `/128` or IPv4 `/32`).
+  4. Fetch the current WAF IP Set state and push newly detected IPs via the AWS WAF API (`GetIPSet`, `UpdateIPSet`).
+  5. Publish confirmation messages to SNS.
 
 ---
 
@@ -116,111 +109,105 @@ Amazon SNS _(Send incident notification to the Operations Team)_
 
 ## Implementation Phases
 
-The project is implemented through the following specific phases:
+The deployment comprises 7 technical steps:
 
-1. Research web attack mechanisms (DDoS, HTTP Flood, Brute Force) and AWS WAF features.
-2. Design the overall architecture of the automated attack-response system.
-3. Configure Amazon CloudFront as the primary distribution point for the web application.
-4. Create an AWS WAF Web ACL, define baseline WAF Rules, and initialize an empty IP Set.
-5. Route WAF Logs / Metrics to Amazon CloudWatch.
-6. Configure CloudWatch Alarms to detect abnormal traffic fluctuations from individual IPs.
-7. Develop the AWS Lambda Function (Python / `boto3`) to implement the WAF IP Set update logic.
-8. Set up IAM Policies/Roles ensuring the Principle of Least Privilege for Lambda.
-9. Configure the Amazon SNS Topic and Subscribers (Email/Webhook) to receive alerts.
-10. Conduct simulated attack testing (Stress Test / HTTP Flood) to verify the system's automation.
-11. Optimize detection thresholds and finalize technical documentation.
+1. **Host Static Website on Amazon S3:** Create an S3 Bucket in region `us-east-1`, enable Block Public Access, and upload website assets.
+2. **Distribute via Amazon CloudFront:** Create a distribution attached to S3 via OAC, configure HTTP-to-HTTPS redirect, and set the S3 Bucket Policy.
+3. **Configure AWS WAF & Logging:** Create an IPv6 IP Set (`AutoBlockedIPSetV6`), set up a Web ACL associated with CloudFront, configure Rate-based & IP Set rules, and enable CloudWatch Logging to `aws-waf-logs-cloudfront`.
+4. **Create Amazon SNS Topic:** Create SNS Topic `WAFAlertTopic` and configure a Gmail subscription.
+5. **Set up IAM Role & AWS Lambda Function:** Create IAM Role `LambdaWAFAutoBlockRole` with `logs`, `wafv2`, and `sns` permissions; deploy Lambda `WAFAutoBlockFunction` (Python 3.12), set 4 environment variables (`IP_SET_NAME`, `IP_SET_ID`, `LOG_GROUP_NAME`, `SNS_TOPIC_ARN`), and attach an SNS Trigger.
+6. **Configure CloudWatch Alarm:** Create a Metric Alarm monitoring `BlockedRequests` with a notification action directed to `WAFAlertTopic` on In Alarm state.
+7. **Testing & Resource Cleanup:** Run PowerShell scripts simulating attack traffic to verify automated IP blocking, followed by proper resource teardown.
 
 ## Technical Requirements
 
 ### Programming Languages & SDKs
 
-- Python 3.x
-- AWS SDK for Python (`boto3`) / AWS SDK for JavaScript
+- Python 3.12
+- AWS SDK for Python (`boto3`)
 
 ### Cloud Infrastructure & Tools
 
-- AWS Management Console
-- AWS CLI
-- AWS CloudFormation / SAM (Serverless Application Model - _optional deployment method_)
+- AWS Management Console (Region: `us-east-1` / Global)
+- AWS WAFv2 API (`GetIPSet`, `UpdateIPSet`)
+- CloudWatch Logs Filter API (`filter_log_events`)
 
-### Testing & Simulation Tools
+### Testing Tools
 
-- Apache JMeter / Locust / `artillery` (Simulating traffic & HTTP Flood attacks)
-- Curl / Postman
-
----
-
-# 5. Implementation Roadmap
-
-The project is implemented across 8 main work phases:
-
-| Phase                                    | Work Content                                                                                                                  |
-| :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| **Phase 1 – Project Planning**           | Analyze security requirements; design the automated infrastructure architecture model on AWS.                                 |
-| **Phase 2 – Edge Protection**            | Deploy the Amazon CloudFront distribution; create the Web ACL in AWS WAF; initialize the IP Set for the blocklist.            |
-| **Phase 3 – Monitoring & Logging**       | Enable WAF Logging and forward logs to CloudWatch Logs; set up CloudWatch Alarms to detect threshold breaches.                |
-| **Phase 4 – Automation Logic**           | Write Python source code for the Lambda Function to interact with the AWS WAF API (`GetIPSet`, `UpdateIPSet`); handle IP TTL. |
-| **Phase 5 – Alert Integration**          | Configure the Amazon SNS Topic; subscribe to notifications via Email / Slack Webhook / Telegram Bot.                          |
-| **Phase 6 – IAM Security & Permissions** | Review and tighten IAM Roles, granting Lambda the minimum required permissions (Least Privilege).                             |
-| **Phase 7 – System Testing**             | Execute simulated HTTP Flood / Brute Force attack scenarios; measure response time and fine-tune thresholds.                  |
-| **Phase 8 – Project Completion**         | Summarize performance evaluation metrics; finalize the internship report and solution demo documentation.                     |
+- PowerShell / Bash CLI (`Invoke-WebRequest` / `curl`)
 
 ---
 
-# 6. Budget Estimation
+# 5. Deployment Roadmap
 
-## Infrastructure Cost Estimate
+Project implementation roadmap following 7 standardized technical steps:
 
-The operating cost of this automated solution is extremely optimized due to the Serverless and Pay-as-you-go model.
+| Step       | Technical Task Description                                                                                                   | Associated Components    |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------- | :----------------------- |
+| **Step 1** | Create S3 Bucket, block public access, and upload static site files.                                                         | Amazon S3                |
+| **Step 2** | Deploy CloudFront distribution connected via OAC, update S3 Bucket Policy.                                                   | CloudFront, S3           |
+| **Step 3** | Initialize WAF IP Set V6, create Web ACL with Rate-based + IP Set rules, enable Logging to `aws-waf-logs-cloudfront`.        | AWS WAF, CloudWatch Logs |
+| **Step 4** | Create SNS Topic `WAFAlertTopic` and confirm Email Subscription.                                                             | Amazon SNS               |
+| **Step 5** | Provision IAM Role `LambdaWAFAutoBlockRole`, deploy Python Lambda code, set 4 environment variables, and attach SNS trigger. | AWS Lambda, IAM, SNS     |
+| **Step 6** | Configure CloudWatch Alarm tracking `BlockedRequests` linked to SNS Topic.                                                   | CloudWatch Alarm, SNS    |
+| **Step 7** | Execute attack simulation script, check logs, verify IP blocking in WAF IP Set, confirm email alert, and perform cleanup.    | PowerShell / AWS Console |
 
-| AWS Service              | Cost Description                    | Estimated Cost       |
-| :----------------------- | :---------------------------------- | :------------------- |
-| **AWS WAF**              | Web ACL & Rule Groups               | ~$5.00/month         |
-| **Amazon CloudFront**    | Distribution traffic (Free Tier)    | ~$0.50/month         |
-| **Amazon CloudWatch**    | Metrics, Logs & Alarms              | ~$0.30/month         |
-| **AWS Lambda**           | Number of requests & execution time | ~$0.05/month         |
-| **Amazon SNS**           | Number of alert messages sent       | ~$0.01/month         |
-| **Total Estimated Cost** | **Monthly operating cost**          | **~$5.86 USD/month** |
+---
 
-### Cost Optimization Guidance
+# 6. Cost Estimation
 
-- **AWS Budgets:** Set up automatic alerts when total resource cost exceeds **$10.00/month**.
-- **CloudWatch Log Retention:** Configure a short log retention period (3–7 days) during testing to avoid increased Log Group storage costs.
-- **Post-demo Cleanup:** Delete test scenarios, deactivate unused WAF Web ACLs, and remove CloudWatch Alarms and SNS Subscriptions after the internship period ends to avoid unwanted charges.
+## Infrastructure Cost Breakdown
+
+Operating costs are minimal due to the Serverless pay-as-you-go billing model.
+
+| AWS Service              | Cost Description                                   | Estimated Monthly Cost |
+| :----------------------- | :------------------------------------------------- | :--------------------- |
+| **AWS WAF**              | Web ACL & Rule Groups                              | ~$5.00/month           |
+| **Amazon CloudFront**    | Data Transfer Out (Free Tier covered)              | ~$0.50/month           |
+| **Amazon CloudWatch**    | Metrics, Logs (`aws-waf-logs-cloudfront`) & Alarms | ~$0.30/month           |
+| **AWS Lambda**           | Request Count & Execution Duration                 | ~$0.05/month           |
+| **Amazon SNS**           | Notification Email Deliveries                      | ~$0.01/month           |
+| **Total Estimated Cost** | **Monthly Operational Expense**                    | **~$5.86 USD/month**   |
+
+### Post-Demo Resource Cleanup Sequence
+
+To prevent recurring charges after testing, resources **must** be deleted in reverse dependency order:
+
+1. **Delete CloudWatch Alarm:** Delete `WAF-BlockedRequests-Alarm`.
+2. **Delete Lambda & IAM:** Remove Lambda Function `WAFAutoBlockFunction`, IAM Role `LambdaWAFAutoBlockRole`, and Policy `LambdaWAFAutoBlockPolicy`.
+3. **Delete SNS Topic:** Delete Topic `WAFAlertTopic`.
+4. **Remove AWS WAF & IP Set:** Disassociate WAF from CloudFront, disable logging, delete `WebsiteProtectionACL`, and remove `AutoBlockedIPSetV6`.
+5. **Delete Log Groups:** Delete Log Groups `/aws/lambda/WAFAutoBlockFunction` and `aws-waf-logs-cloudfront`.
+6. **Disable & Delete CloudFront Distribution:** Disable the distribution and delete once status updates to Disabled.
+7. **Delete S3 Bucket:** Empty bucket contents completely and delete the S3 Bucket.
 
 ---
 
 # 7. Risk Assessment
 
-## Risks & Mitigations
+## Risks & Mitigation Strategies
 
-- **Risk 1 - Misconfigured thresholds causing False Positives:** A CloudWatch Alarm threshold set too low may result in blocking legitimate users.
-  - _Mitigation:_ Set the test threshold to **Count** mode before activating the official **Block** rule; establish a manual override/whitelist process.
-- **Risk 2 - IAM permission errors or API Throttling:** The Lambda function may fail to execute due to missing IAM permissions or hitting AWS WAF API rate limits.
-  - _Mitigation:_ Apply proper Least Privilege IAM permissions; implement Backoff & Retry techniques in the Lambda source code.
-- **Risk 3 - Sudden spike in logging costs:** A very fast-moving attack can drive up CloudWatch Logs storage costs.
-  - _Mitigation:_ Limit the scope of collected log data; use WAF's `Sampled Requests` instead of storing full raw logs during testing.
-- **Risk 4 - Log processing latency:** Delays in pushing logs from CloudFront/WAF to CloudWatch can slow down the automated response process.
-  - _Mitigation:_ Combine WAF Rate-based Rules (processed directly at the WAF engine) in parallel with the Lambda Automation workflow to create a two-layer protection mechanism.
+- **Risk 1 — IAM Permission or Environment Variable Errors:** Lambda execution fails due to insufficient API permissions or incorrect parameter configurations.
+  - _Mitigation:_ Ensure IAM Policies grant the necessary `logs`, `wafv2`, and `sns` permissions, and verify all 4 environment variables are accurately set in the Lambda Configuration.
+- **Risk 2 — Incorrect Teardown Order:** Attempting deletion out of order results in "Resource in use" dependency errors.
+  - _Mitigation:_ Strictly adhere to the 7-step reverse cleanup sequence.
+- **Risk 3 — WAF Log Streaming Latency:** Minor delays in WAF log delivery to CloudWatch Logs may cause Lambda to miss recently blocked IPs during short time windows.
+  - _Mitigation:_ Program Lambda to query a 15-minute log window (`fifteen_min_ago = now - (15 * 60 * 1000)`) to compensate for logging latency.
 
 ---
 
-# 8. Expected Results
+# 8. Expected Outcomes
 
-## Technical Results
+## Technical Outcomes
 
-Upon completion, the project will deliver:
+Upon completion, the project delivers:
 
-- A web application security solution that automates 100% of the process for blocking abnormal IP addresses.
-- A detection and mitigation system with a near real-time response time measured in seconds.
-- Full integration of the AWS WAF – CloudFront – CloudWatch – Lambda – SNS service chain, aligned with AWS Best Practices.
-- A visual monitoring dashboard on CloudWatch displaying traffic volume, number of blocked requests, and the list of offending IPs.
-- An instant incident-alerting system that notifies administrators via SNS.
+- A fully automated web threat protection solution for S3 + CloudFront static websites.
+- An end-to-end automated pipeline: CloudWatch Alarm detects threshold breach → SNS triggers → SNS notifies Admin & invokes Lambda → Lambda reads CloudWatch Logs → Lambda updates WAF IP Set for permanent blocking.
+- Instant security alert notifications delivered directly via email.
 
 ## Practical Value
 
-This project demonstrates the strong practical applicability of **DevSecOps** thinking and **Serverless Security** architecture in protecting enterprise infrastructure:
-
-- Optimizes operational staffing costs (significantly reducing manual intervention from the SOC/SecOps team).
-- Improves the availability and reliability of web applications against threats from the Internet.
-- Lays the foundation for expanding into deeper security scenarios, such as integrating AWS Shield and automatically updating malicious IP lists from external Threat Intelligence sources.
+- Drastically reduces manual effort required by Security and Cloud Operations teams.
+- Increases service availability and resilience against automated web threats.
+- Serves as a baseline architecture reference for enterprise Serverless Security implementations on AWS.
