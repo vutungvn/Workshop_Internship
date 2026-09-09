@@ -20,7 +20,7 @@ Throughout this workshop, you will practice the complete end-to-end deployment w
 
 1. [Workshop Overview](5.1-Workshop-overview/)
 2. [Prerequisites](5.2-Prerequisite/)
-3. [Project Foundation](5.3-Project-foundation/)
+3. [Project Preparation](5.3-Project-foundation/)
 4. [Host Static Website on Amazon S3](5.4-Host-Static-Website-S3/)
 5. [Distribute Content via Amazon CloudFront](5.5-Distribute-via-CloudFront/)
 6. [Configure AWS WAF & Logging](5.6-Configure-AWS-WAF-Logging/)

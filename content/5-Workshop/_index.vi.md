@@ -20,7 +20,7 @@ Trong suốt bài workshop này, bạn sẽ thực hành trọn vẹn quy trình
 
 1. [Tổng quan Workshop](5.1-Workshop-overview/)
 2. [Điều kiện chuẩn bị](5.2-Prerequisite/)
-3. [Chuẩn bị nền tảng dự án](5.3-Project-foundation/)
+3. [Chuẩn bị dự án](5.3-Project-foundation/)
 4. [Host website tĩnh trên Amazon S3](5.4-Host-Static-Website-S3/)
 5. [Phân phối dữ liệu qua Amazon CloudFront](5.5-Distribute-via-CloudFront/)
 6. [Cấu hình AWS WAF & Logging](5.6-Configure-AWS-WAF-Logging/)
