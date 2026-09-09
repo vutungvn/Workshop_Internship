@@ -1,6 +1,6 @@
 ---
 title: "Tổng quan Workshop"
-date: 2026-01-01
+date: 2026-08-24
 weight: 1
 chapter: false
 pre: " <b> 5.1. </b> "
